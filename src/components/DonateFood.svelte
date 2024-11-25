@@ -486,7 +486,7 @@
     background: #27ae60;
   }
 
-  .modal button[type="submit"] {
+  /* .modal button[type="submit"] {
     padding: 0.8rem;
     background: #2ecc71;
     color: white;
@@ -499,7 +499,7 @@
 
   .modal button[type="submit"]:hover {
     background: #27ae60;
-  }
+  } */
 
   .stats-container {
     flex: 1;

@@ -1,15 +1,19 @@
 <script>
     import DonateFood from "./DonateFood.svelte";
-    let showModal = false;
+    import FindFood from "./FindFood.svelte";
 
-    // Functions to open and close the modal
+    let showModal = false; // State for "Donate Food" modal
+    let showModalFood = false; // State for "Find Food" modal
+
+    // Functions to open and close the modals
     const openModal = () => (showModal = true);
     const closeModal = () => (showModal = false);
 
+    const openModalFood = () => (showModalFood = true);
+    const closeModalFood = () => (showModalFood = false);
 </script>
 
 <style>
-    /* Base styles */
     header {
         display: flex;
         justify-content: space-between;
@@ -70,17 +74,27 @@
 <header>
     <div class="logo-container">
         <div class="logo">FoodShare</div>
-        <div class="subtitle">Hunger Relief NGO for the people of OHIO</div>
+        <div class="subtitle">Hunger Relief NGO for OHIO</div>
     </div>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <!-- svelte-ignore a11y-invalid-attribute -->
-            <li><a href="#" on:click={openModal}>Donate Food</a></li>
-            <li><a href="/find">Find Food</a></li>
+            <!-- Trigger Donate Food modal -->
+            <li>
+                <!-- svelte-ignore a11y-invalid-attribute -->
+                <a href="#" on:click={openModal}>Donate Food</a>
+            </li>
+            <!-- Trigger Find Food modal -->
+            <li>
+                <!-- svelte-ignore a11y-invalid-attribute -->
+                <a href="#" on:click={openModalFood}>Find Food</a>
+            </li>
             <li><a href="/tips">Tips</a></li>
             <li><a href="/about">About</a></li>
         </ul>
     </nav>
+
+    <!-- Modals -->
     <DonateFood {showModal} {closeModal} />
+    <FindFood {showModalFood} {closeModalFood} />
 </header>
