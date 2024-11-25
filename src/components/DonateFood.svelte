@@ -109,7 +109,7 @@
           <button type="button" class="add-item-button" on:click={addFoodItem}>
             + Item
           </button>
-          <h3>How would you like to donate?</h3>
+          <h3>How would you like to share food?</h3>
           <div>
             <button
               type="button"
@@ -244,7 +244,7 @@
 {/if}
 
 {#if showConfirmation}
-  <div class="confirmation">🎉 Thank you for donating Food!</div>
+  <div class="confirmation">🎉 Thank you for sharing Food!</div>
 {/if}
 
 <style>
