@@ -91,7 +91,7 @@
 
               <input
                 type="number"
-                placeholder="Price"
+                placeholder="Price/Item"
                 bind:value={item.price}
                 min="0"
               />
@@ -142,12 +142,8 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 {#if showPickupModal}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div class="modal-overlay" on:click={closePickupModal}>
-    <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="modal" on:click|stopPropagation>
+    <div class="modal3" on:click|stopPropagation>
       <button class="close-button" on:click={closePickupModal}>&times;</button>
       <h2>Schedule a Pickup</h2>
       <form on:submit|preventDefault={submitForm}>
@@ -175,6 +171,20 @@
           bind:value={pickupDetails.address}
         ></textarea>
 
+        <label for="pickup-date">Pickup Date</label>
+        <input
+          type="date"
+          id="pickup-date"
+          bind:value={pickupDetails.date}
+        />
+
+        <label for="pickup-time">Pickup Time</label>
+        <input
+          type="time"
+          id="pickup-time"
+          bind:value={pickupDetails.time}
+        />
+
         <button type="submit">Submit</button>
       </form>
     </div>
@@ -188,18 +198,49 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div class="modal-overlay" on:click={closeDropoffModal}>
-    <div class="modal2" on:click|stopPropagation>
-      <button class="close-button" on:click={closeDropoffModal}>&times;</button>
-      <h2>Drop Off Your Donation</h2>
-      <p>
-        Please drop off your food at:
-        <br />
-        <strong>FoodShare Donation Center</strong>
-        <br />
-        123 Community Drive, OHIO
-      </p>
-    </div>
+  <div class="modal2" on:click|stopPropagation>
+    <button class="close-button" on:click={closeDropoffModal}>&times;</button>
+    <h2>Drop Off Your Donation</h2>
+    <p>
+      Please drop off your food at:
+      <br />
+      <strong>FoodShare Donation Center</strong>
+      <br />
+      <strong>123 Community Drive, OHIO</strong>
+    </p>
+
+    <p>
+      We are located at 1730 Race Street across from Findlay Market in
+      Cincinnati, Ohio’s Over the Rhine neighborhood.
+    </p>
+
+    <p>
+      When delivering food items, please come to our donation door in the back
+      alley behind our building (map below). If you are heading south on Race,
+      go past our building to the first drive on the left (parking lot).
+    </p>
+
+    <p>
+      Make the next left onto the alley, and pull up to the green door on our
+      yellow building.
+    </p>
+
+    <p>
+      Ring the doorbell with the big green painted arrow next to it. Someone
+      will help you unload, and you can be on your way!
+    </p>
+
+    <p>
+      If you’d like to coordinate your donation with our current needs, contact
+      Kathy Schickel, Director of Operations:
+    </p>
+
+    <p>
+      <strong>Call:</strong> (602)- 815 3837 <br />
+      <strong>Email:</strong> <a href="mailto:grovernt@mail.uc.edu">grovernt@mail.uc.edu</a>
+    </p>
   </div>
+</div>
 {/if}
 
 {#if showConfirmation}
@@ -226,7 +267,7 @@
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 1000px;
+    width: 1400px;
     max-width: 90%;
     position: relative;
     display: flex;
@@ -234,17 +275,136 @@
     gap: 1rem;
   }
 
+
   .modal2 {
     background: white;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
-    max-width: 90%;
+    max-width: 600px;
+    width: 90%;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #333;
     position: relative;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+
+  .modal3 {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #333;
+    position: relative;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+  }
+
+  .modal3 h2 {
+    font-size: 1.5rem;
+    color: #2ecc71;
+    margin-bottom: 1rem;
+  }
+
+  .modal3 label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal3 input,
+  .modal3 textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal3 button {
+    padding: 0.8rem;
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+
+  .modal3 button:hover {
+    background: #27ae60;
+  }
+
+  .close-button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+
+  .close-button:hover {
+    color: #333;
+  }
+
+
+  .modal2 h2 {
+    font-size: 1.5rem;
+    color: #2ecc71;
+    margin-bottom: 1rem;
+  }
+
+  .modal2 p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  .modal2 a {
+    color: #2ecc71;
+    text-decoration: none;
+  }
+
+  .modal2 a:hover {
+    text-decoration: underline;
+  }
+
+  .close-button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #999;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+
+  .close-button:hover {
+    color: #333;
   }
 
   .modal h2 {
