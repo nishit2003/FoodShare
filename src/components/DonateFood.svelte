@@ -85,10 +85,17 @@
               />
               <input
                 type="number"
+                placeholder="Quantity"
+                bind:value={item.name}
+              />
+
+              <input
+                type="number"
                 placeholder="Price"
                 bind:value={item.price}
                 min="0"
               />
+
               <button
                 type="button"
                 class="remove-button"
