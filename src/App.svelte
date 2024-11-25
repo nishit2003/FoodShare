@@ -1,17 +1,22 @@
 <script>import "./app.css";
+// import Header from "./components/Header.svelte";
+// @ts-ignore
 import Header from "./components/Header.svelte";
-import Hero from "./components/Hero.svelte";
+// import Hero from "../components/Hero.svelte";
 import DonationCounter from "./components/DonationCounter.svelte";
-import Stats from "./components/Stats.svelte";
-import Stats2 from "./components/stats2.svelte";
+import Stats from "./components/stats.svelte";
+import Parentview from "./components/parentview.svelte";
+// import Stats2 from "../components/stats2.svelte";
 </script>
 
 <Header></Header>
 <DonationCounter></DonationCounter>
-<Stats2></Stats2>
+
 <main>
   <!-- <h1>Welcome to FoodShare!</h1> -->
-  <Hero></Hero>
+   <!-- <Stats2></Stats2>
+  <Hero></Hero> -->
+  <Parentview></Parentview>
   
 </main>
 <Stats></Stats>

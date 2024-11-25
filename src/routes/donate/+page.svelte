@@ -1,15 +1,8 @@
 <script>
-    import DonateFood from "./DonateFood.svelte";
-    let showModal = false;
-
-    // Functions to open and close the modal
-    const openModal = () => (showModal = true);
-    const closeModal = () => (showModal = false);
-
+    // Add logic if needed
 </script>
 
 <style>
-    /* Base styles */
     header {
         display: flex;
         justify-content: space-between;
@@ -65,22 +58,61 @@
         color: #f1c40f; /* Yellow hover effect */
         transform: translateY(-2px); /* Slight lift on hover */
     }
+
+    .container {
+        padding: 2rem;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #2ecc71; /* Match the theme of your header */
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    .button {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        color: white;
+        background-color: #2ecc71;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .button:hover {
+        background-color: #27ae60;
+    }
 </style>
 
 <header>
     <div class="logo-container">
         <div class="logo">FoodShare</div>
-        <div class="subtitle">Hunger Relief NGO for the people of OHIO</div>
+        <div class="subtitle">Hunger Relief NGO for OHIO</div>
     </div>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <!-- svelte-ignore a11y-invalid-attribute -->
-            <li><a href="#" on:click={openModal}>Donate Food</a></li>
+            <li><a href="/donate">Donate Food</a></li>
             <li><a href="/find">Find Food</a></li>
             <li><a href="/tips">Tips</a></li>
             <li><a href="/about">About</a></li>
         </ul>
     </nav>
-    <DonateFood {showModal} {closeModal} />
 </header>
+
+<div class="container">
+    <h1>Donate Food</h1>
+    <p>
+        Thank you for your generosity! Your donations make a real difference
+        in fighting hunger.
+    </p>
+    <a class="button" href="/">Go Back to Home</a>
+</div>
