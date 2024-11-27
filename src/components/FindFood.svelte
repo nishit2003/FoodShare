@@ -1,60 +1,61 @@
 <script>
   export let showModalFood = false;
   export let closeModalFood;
+  import Hero from "./hero.svelte";
 
   // Sample food data
   const foodItems = [
     {
       id: 1,
-      image: "/images/pizza.jpg",
+      image: "https://www.foodandwine.com/thmb/4qg95tjf0mgdHqez5OLLYc0PNT4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/classic-cheese-pizza-FT-RECIPE0422-31a2c938fc2546c9a07b7011658cfd05.jpg", 
       title: "Pizza",
       ingredients: ["Flour", "Cheese", "Tomato Sauce"],
     },
     {
       id: 2,
-      image: "/images/salad.jpg",
+      image: "https://cdn.loveandlemons.com/wp-content/uploads/2021/04/green-salad.jpg",
       title: "Salad",
       ingredients: ["Lettuce", "Tomatoes", "Cucumbers"],
     },
     {
       id: 3,
-      image: "/images/sandwich.jpg",
+      image: "https://www.sargento.com/assets/Uploads/Recipe/Image/Sargento11501__FillWzExNzAsNTgzXQ.jpg",
       title: "Sandwich",
       ingredients: ["Bread", "Lettuce", "Chicken"],
     },
     {
       id: 4,
-      image: "/images/pasta.jpg",
+      image: "https://assets.epicurious.com/photos/5988e3458e3ab375fe3c0caf/1:1/w_3607,h_3607,c_limit/How-to-Make-Chicken-Alfredo-Pasta-hero-02082017.jpg",
       title: "Pasta",
       ingredients: ["Pasta", "Cheese", "Basil"],
     },
     {
       id: 5,
-      image: "/images/soup.jpg",
+      image: "https://www.connoisseurusveg.com/wp-content/uploads/2024/02/vegetable-noodle-soup-sq.jpg",
       title: "Soup",
       ingredients: ["Carrots", "Onions", "Celery"],
     },
     {
       id: 6,
-      image: "/images/burger.jpg",
+      image: "https://www.thespruceeats.com/thmb/UpVWAcHnFEe_KvQpYsR1a7U-WY0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-your-best-grilled-burger-recipe-7511041-hero-C-c5080fa5f97c4c2b908968527f8a851b.jpg",
       title: "Burger",
       ingredients: ["Buns", "Beef Patty", "Lettuce"],
     },
     {
       id: 7,
-      image: "/images/curry.jpg",
+      image: "https://saltedmint.com/wp-content/uploads/2024/01/Simple-Thai-yellow-chicken-curry.jpg",
       title: "Curry",
       ingredients: ["Chicken", "Spices", "Rice"],
     },
     {
       id: 8,
-      image: "/images/dessert.jpg",
+      image: "https://chopnotch.com/wp-content/uploads/2020/11/Panna-Cotta-1.jpg",
       title: "Dessert",
       ingredients: ["Cream", "Sugar", "Berries"],
     },
     {
       id: 9,
-      image: "/images/pie.jpg",
+      image: "https://www.allrecipes.com/thmb/ITzMWta04gWy7ri2zIWFYfMvr54=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AR-76296-Meat-Pie-DDMFS-4x3-beauty-f987781548f14bfcb0cb282f598e4e60.jpg",
       title: "Pie",
       ingredients: ["Pie Crust", "Apples", "Cinnamon"],
     },
@@ -75,32 +76,35 @@
 </script>
 
 {#if showModalFood}
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <!-- svelte-ignore a11y-no-static-element-interactions -->
   <div class="modal-overlay" on:click={closeModalFood}>
     <div class="modal" on:click|stopPropagation>
       <button class="close-button" on:click={closeModalFood}>&times;</button>
-      <h2>Find Food</h2>
-
-      <!-- Food Grid -->
-      <div class="grid">
-        {#each foodItems as item}
-          <div class="grid-item">
-            <img src={item.image} alt={item.title} />
-            <h3>{item.title}</h3>
-            <button on:click={() => showIngredients(item.ingredients)}>
-              See Ingredients
-            </button>
-            <button on:click={() => reserveItem(item.title)}>Reserve</button>
-          </div>
-        {/each}
+      <div class="content">
+        <Hero />
+        <div class="grid">
+          {#each foodItems as item}
+            <div class="grid-item">
+              <img src={item.image} alt={item.title} />
+              <h3>{item.title}</h3>
+              <button on:click={() => showIngredients(item.ingredients)}>
+                See Ingredients
+              </button>
+              <button on:click={() => reserveItem(item.title)}>Reserve</button>
+            </div>
+          {/each}
+        </div>
       </div>
 
       <!-- Ingredients Modal -->
       {#if selectedIngredients}
-        <div class="ingredients-modal" on:click={() => (selectedIngredients = null)}>
+        <div
+          class="ingredients-modal"
+          on:click={() => (selectedIngredients = null)}
+        >
           <div class="ingredients-content" on:click|stopPropagation>
             <button
               class="close-button"
@@ -142,53 +146,64 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     max-width: 900px;
     width: 90%;
+    height: 90%;
     position: relative;
     overflow-y: auto;
   }
 
-  .modal h2 {
-    font-size: 1.5rem;
-    color: #2ecc71;
-    margin-bottom: 1rem;
+  .content {
+    display: flex;
+    /* gap: 1rem; */
+  }
+
+  .hero {
+    /* flex: 1; */
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
   }
 
   .grid {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.5rem; /* Reduce gap between grid items */
+    height: 100%; /* Constrain grid height */
+    overflow-y: auto; /* Allow scrolling only if necessary */
   }
 
   .grid-item {
     background: #f9f9f9;
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.5rem; /* Reduce padding to save space */
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .grid-item img {
     width: 100%;
-    height: 150px;
+    height: 100px; /* Reduce image height */
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .grid-item h3 {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Reduce font size */
     color: #333;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
   }
 
   .grid-item button {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    border: none;
-    border-radius: 5px;
+    padding: 0.3rem; /* Reduce button padding */
+    margin-bottom: 3px;
+    font-size: 0.8rem; /* Reduce font size */
+    border-radius: 4px;
     cursor: pointer;
     background: #2ecc71;
     color: white;
