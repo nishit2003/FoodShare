@@ -1,7 +1,7 @@
 <script>import "./app.css";
 // import Header from "./components/Header.svelte";
 // @ts-ignore
-import Header from "./components/Header.svelte";
+import Header from "./components/header.svelte";
 // import Hero from "../components/Hero.svelte";
 import DonationCounter from "./components/DonationCounter.svelte";
 import Stats from "./components/stats.svelte";
