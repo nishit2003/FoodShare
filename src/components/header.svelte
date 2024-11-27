@@ -40,7 +40,7 @@
       <!-- Trigger Donate Food modal -->
       <li>
         <!-- svelte-ignore a11y-invalid-attribute -->
-        <a href="#" on:click={openModal}>Donate Food</a>
+        <a href="#" on:click={openModal}>Share Food</a>
       </li>
       <!-- Trigger Find Food modal -->
       <li>
@@ -49,7 +49,7 @@
       </li>
       <li><a href="/#" on:click={openModalTips}>Tips</a></li>
       <li><a href="/#" on:click={openModalAbout}>About</a></li>
-      <li><a href="/#" on:click={openModalDonateUs}>Donate US</a></li>
+      <li><a href="/#" on:click={openModalDonateUs}>Donate Us</a></li>
     </ul>
   </nav>
 
