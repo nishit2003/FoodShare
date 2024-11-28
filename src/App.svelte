@@ -17,6 +17,7 @@ import nonu from '/nonu.mp4';
   <!-- <h1>Welcome to FoodShare!</h1> -->
    <!-- <Stats2></Stats2>
   <Hero></Hero> -->
+  
   <!-- <Parentview></Parentview> -->
   <!-- svelte-ignore a11y-media-has-caption -->
   <video  autoplay loop muted >
