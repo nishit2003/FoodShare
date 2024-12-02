@@ -156,13 +156,13 @@
     /* gap: 1rem; */
   }
 
-  .hero {
+  /* .hero {
     /* flex: 1; */
-    background: #f9f9f9;
+    /* background: #f9f9f9;
     padding: 1rem;
     border-radius: 8px;
-    text-align: center;
-  }
+    text-align: center; */
+  /* } */ 
 
   .grid {
     flex: 1;
