@@ -86,7 +86,7 @@
               <input
                 type="number"
                 placeholder="Quantity"
-                bind:value={item.name}
+                bind:value={item.qty}
               />
 
               <input
