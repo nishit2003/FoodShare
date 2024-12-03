@@ -232,7 +232,7 @@
 
     <p>
       If you’d like to coordinate your donation with our current needs, contact
-      Kathy Schickel, Director of Operations:
+      Nishit Grover, Director of Operations:
     </p>
 
     <p>
